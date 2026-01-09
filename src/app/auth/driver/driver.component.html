@@ -1,0 +1,43 @@
+<div class="container mt-4">
+
+  <h3>Driver Dashboard</h3>
+
+  <div *ngIf="!rides.length" class="alert alert-info mt-3">
+    No rides available
+  </div>
+
+  <div *ngFor="let r of rides" class="card p-3 mt-3 shadow-sm">
+
+    <p><b>Pickup:</b> {{ r.pickup }}</p>
+    <p><b>Drop:</b> {{ r.drop }}</p>
+    <p><b>Distance:</b> {{ r.distance }} km</p>
+    <p><b>Fare:</b> ₹ {{ r.fare }}</p>
+    <p>
+      <b>Status:</b>
+      <span class="badge bg-secondary">{{ r.status }}</span>
+    </p>
+
+    <!-- REQUESTED -->
+    <button *ngIf="r.status === 'REQUESTED'"
+            class="btn btn-success w-100"
+            (click)="acceptRide(r._id)">
+      Accept Ride
+    </button>
+
+    <!-- ASSIGNED -->
+    <button *ngIf="r.status === 'ASSIGNED'"
+            class="btn btn-warning w-100"
+            (click)="startRide(r._id)">
+      Start Ride
+    </button>
+
+    <!-- STARTED -->
+    <button *ngIf="r.status === 'STARTED'"
+            class="btn btn-danger w-100"
+            (click)="completeRide(r._id)">
+      End Ride
+    </button>
+
+  </div>
+
+</div>

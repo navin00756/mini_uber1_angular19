@@ -1,0 +1,65 @@
+<div class="admin-container container mt-4">
+
+  <!-- HEADER -->
+  <div class="admin-header d-flex justify-content-between align-items-center mb-4">
+    <h3 class="mb-0">👑 Admin Dashboard</h3>
+    <button class="btn btn-danger btn-sm" (click)="logout()">Logout</button>
+  </div>
+
+  <!-- TABS -->
+  <div class="btn-group admin-tabs mb-4">
+    <button class="btn"
+            [class.active]="tab === 'users'"
+            (click)="loadUsers()">All Users</button>
+
+    <button class="btn"
+            [class.active]="tab === 'riders'"
+            (click)="loadRiders()">Riders</button>
+
+    <button class="btn"
+            [class.active]="tab === 'drivers'"
+            (click)="loadDrivers()">Drivers</button>
+  </div>
+
+  <!-- CARD -->
+  <div class="card shadow-sm admin-card">
+
+    <!-- LOADER -->
+    <div *ngIf="loading" class="p-4 text-center">
+      <div class="spinner-border text-dark"></div>
+      <p class="mt-2">Loading data...</p>
+    </div>
+
+    <!-- TABLE -->
+    <table *ngIf="!loading" class="table table-hover mb-0">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Role</th>
+          <th>Created</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let u of data">
+          <td>{{ u.name }}</td>
+          <td>{{ u.email }}</td>
+          <td>
+            <span class="badge"
+                  [ngClass]="{
+                    'badge-rider': u.role === 'rider',
+                    'badge-driver': u.role === 'driver',
+                    'badge-admin': u.role === 'admin'
+                  }">
+              {{ u.role }}
+            </span>
+          </td>
+          <td>{{ u.createdAt | date:'short' }}</td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+
+</div>

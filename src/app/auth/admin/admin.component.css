@@ -1,0 +1,78 @@
+
+ /* Uber-style dark background */
+body {
+  background-color: #0b0b0b;   /* Uber black */
+  color: #ffffff;
+  font-family: Inter, Roboto, Arial, sans-serif;
+  margin: 0;
+}
+
+/* Container */
+.admin-container {
+  max-width: 1100px;
+}
+
+/* Header */
+.admin-header {
+  background: #000;
+  color: #fff;
+  padding: 16px 20px;
+  border-radius: 10px;
+}
+
+/* Tabs */
+.admin-tabs .btn {
+  background: #fff;
+  border: 1px solid #ddd;
+  padding: 8px 18px;
+  font-weight: 500;
+}
+
+.admin-tabs .btn.active {
+  background: #000;
+  color: #fff;
+}
+
+/* Card */
+.admin-card {
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+/* Table */
+.table thead {
+  background: #f8f9fa;
+}
+
+.table th {
+  font-weight: 600;
+  color: #333;
+}
+
+/* Role badges */
+.badge {
+  padding: 6px 12px;
+  border-radius: 20px;
+  text-transform: capitalize;
+  font-size: 12px;
+}
+
+.badge-rider {
+  background: #e3f2fd;
+  color: #0d6efd;
+}
+
+.badge-driver {
+  background: #e8f5e9;
+  color: #2e7d32;
+}
+
+.badge-admin {
+  background: #000;
+  color: #fff;
+}
+
+/* Hover effect */
+.table tbody tr:hover {
+  background-color: #f1f3f5;
+}

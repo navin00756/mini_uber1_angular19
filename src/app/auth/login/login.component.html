@@ -1,0 +1,54 @@
+<div class="container mt-5" style="max-width:430px">
+
+  <h3 class="text-center mb-3">
+    {{ mode === 'login' ? 'Login' : 'Register' }}
+  </h3>
+
+  <div class="card p-3">
+
+    <!-- NAME (Register only) -->
+    <div *ngIf="mode === 'register'">
+      <label>Name</label>
+      <input class="form-control mb-2"
+             [(ngModel)]="form.name">
+    </div>
+
+    <label>Email</label>
+    <input class="form-control mb-2"
+           [(ngModel)]="form.email">
+
+    <label>Password</label>
+    <input type="password"
+           class="form-control mb-2"
+           [(ngModel)]="form.password">
+
+    <!-- ROLE SELECT -->
+    <div *ngIf="mode === 'register'">
+      <label>Role</label>
+      <select class="form-control mb-3"
+              [(ngModel)]="form.role">
+        <option value="rider">Rider</option>
+        <option value="driver">Driver</option>
+        <option value="admin">Admin</option>
+      </select>
+    </div>
+
+    <button class="btn btn-primary w-100"
+            (click)="submit()">
+      {{ mode === 'login' ? 'Login' : 'Register' }}
+    </button>
+
+    <!-- TOGGLE MODE (NO REFRESH) -->
+    <p class="text-center mt-3">
+      <button type="button"
+              class="btn btn-link p-0"
+              (click)="toggleMode()">
+        {{ mode === 'login'
+          ? 'Create an account'
+          : 'Already have an account? Login' }}
+      </button>
+    </p>
+
+  </div>
+
+</div>

@@ -1,0 +1,102 @@
+/* ===== DRIVER DASHBOARD (UBER STYLE) ===== */
+
+body {
+  background: #f5f5f5;
+  font-family: Inter, Roboto, "Helvetica Neue", sans-serif;
+}
+
+/* Page Title */
+h3 {
+  font-weight: 700;
+  font-size: 22px;
+  margin-bottom: 12px;
+}
+
+/* No rides alert */
+.alert-info {
+  background: #ffffff;
+  border: none;
+  border-radius: 12px;
+  font-weight: 500;
+  color: #555;
+}
+
+/* Ride Card */
+.card {
+  border-radius: 16px;
+  border: none;
+  background: #ffffff;
+}
+
+/* Ride details */
+.card p {
+  margin-bottom: 6px;
+  font-size: 14px;
+  color: #444;
+}
+
+/* Pickup & Drop emphasis */
+.card p b {
+  color: #000;
+}
+
+/* Status badge */
+.badge {
+  padding: 6px 12px;
+  font-size: 12px;
+  border-radius: 20px;
+  font-weight: 600;
+}
+
+/* Status colors */
+.badge.bg-secondary {
+  background: #e0e0e0 !important;
+  color: #333;
+}
+
+/* Buttons (Uber style) */
+.btn {
+  height: 48px;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 15px;
+}
+
+/* Accept */
+.btn-success {
+  background: #1dbf73;
+  border: none;
+}
+
+.btn-success:hover {
+  background: #17a965;
+}
+
+/* Start */
+.btn-warning {
+  background: #f5a623;
+  border: none;
+  color: #fff;
+}
+
+.btn-warning:hover {
+  background: #e69510;
+}
+
+/* End */
+.btn-danger {
+  background: #e53935;
+  border: none;
+}
+
+.btn-danger:hover {
+  background: #d32f2f;
+}
+
+/* Mobile spacing */
+@media (max-width: 576px) {
+  .container {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+}

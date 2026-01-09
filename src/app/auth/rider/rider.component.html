@@ -1,0 +1,56 @@
+<div class="container mt-4" style="max-width: 600px;">
+
+  <h3>Rider Dashboard</h3>
+
+  <!-- BOOK RIDE -->
+  <div class="card p-3 mt-3 shadow-sm">
+    <label>Pickup Location</label>
+    <input id="pickup" class="form-control"
+           [(ngModel)]="pickup" placeholder="Enter pickup">
+
+    <label class="mt-3">Drop Location</label>
+    <input id="drop" class="form-control"
+           [(ngModel)]="drop" placeholder="Enter drop">
+
+    <label class="mt-3">Ride Type</label>
+    <select class="form-control" [(ngModel)]="rideType">
+      <option value="mini">Mini</option>
+      <option value="sedan">Sedan</option>
+      <option value="suv">SUV</option>
+    </select>
+
+    <button class="btn btn-primary w-100 mt-3"
+            (click)="calculateFare()">
+      Check Fare
+    </button>
+  </div>
+
+  <!-- FARE -->
+  <div *ngIf="fare" class="card p-3 mt-3 shadow-sm">
+    <p>Distance: <strong>{{ distance }} km</strong></p>
+    <p>Base Fare: ₹ {{ baseFare }}</p>
+    <p>Per KM: ₹ {{ perKm }}</p>
+
+    <h5>Estimated Fare: <strong>₹ {{ fare }}</strong></h5>
+
+    <button class="btn btn-success w-100"
+            (click)="confirmRide()">
+      Confirm Ride
+    </button>
+  </div>
+
+  <!-- STATUS -->
+  <div *ngIf="statusMessage"
+       class="card p-3 mt-3 shadow-sm text-center">
+    <h5>{{ statusMessage }}</h5>
+  </div>
+
+  <!-- ✅ PAYMENT CONFIRMATION (SOURCE OF TRUTH UI) -->
+  <div *ngIf="paymentDone"
+       class="alert alert-success mt-3 text-center">
+    <h5>✅ Payment Completed</h5>
+    <p>Payment Reference: <strong>{{ paymentReference }}</strong></p>
+  </div>
+
+</div>
+            
