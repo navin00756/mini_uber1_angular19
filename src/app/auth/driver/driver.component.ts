@@ -11,7 +11,7 @@ import { HttpClient } from '@angular/common/http';
 export class DriverComponent implements OnInit {
 
   rides: any[] = [];
-  base = 'http://localhost:5000/api/rides';
+  base = 'https://uber-clone-1-kqum.onrender.com';
   driverId = '';
 
   constructor(private http: HttpClient) {}

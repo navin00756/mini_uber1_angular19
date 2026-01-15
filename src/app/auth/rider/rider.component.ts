@@ -37,8 +37,8 @@ export class RiderComponent implements AfterViewInit {
 
   statusMessage = '';
 
-  baseUrl = 'http://localhost:5000/api/rides';
-  paymentBaseUrl = 'http://localhost:5000/api/payment';
+  baseUrl = 'https://uber-clone-1-kqum.onrender.com';
+  paymentBaseUrl = 'https://uber-clone-1-kqum.onrender.com';
 
   constructor(private http: HttpClient) {}
 

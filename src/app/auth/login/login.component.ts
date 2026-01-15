@@ -22,7 +22,7 @@ export class LoginComponent {
     role: 'rider'
   };
 
-  base = 'http://localhost:5000/api/auth';
+  base = 'https://uber-clone-1-kqum.onrender.com';
 
   constructor(
     private http: HttpClient,
@@ -40,7 +40,8 @@ export class LoginComponent {
 
   // ---------------- REGISTER ----------------
   register() {
-    this.http.post<any>(`${this.base}/register`, this.form)
+   this.http.post<any>(`${this.base}/register`, this.form)
+
       .subscribe({
         next: res => {
           this.auth.setLogin(res.token, res.user);
@@ -54,10 +55,11 @@ export class LoginComponent {
 
   // ---------------- LOGIN ----------------
   login() {
-    this.http.post<any>(`${this.base}/login`, {
-      email: this.form.email,
-      password: this.form.password
-    })
+  this.http.post<any>(`${this.base}/login`, {
+  email: this.form.email,
+  password: this.form.password
+})
+
     .subscribe({
       next: res => {
         this.auth.setLogin(res.token, res.user);
