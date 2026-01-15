@@ -12,7 +12,6 @@ import { AuthService } from '../../services/auth.service';
   templateUrl: './login.component.html'
 })
 export class LoginComponent {
-
   mode: 'login' | 'register' = 'login';
 
   form = {
@@ -22,7 +21,6 @@ export class LoginComponent {
     role: 'rider'
   };
 
-  // ✅ Correct base for backend route
   base = 'https://uber-clone-1-kqum.onrender.com/api/auth';
 
   constructor(
