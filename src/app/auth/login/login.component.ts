@@ -4,9 +4,6 @@ import { FormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
- 
- 
-
 
 @Component({
   standalone: true,
@@ -25,7 +22,8 @@ export class LoginComponent {
     role: 'rider'
   };
 
-  base = 'https://uber-clone-1-kqum.onrender.com';
+  // ✅ Correct base for backend route
+  base = 'https://uber-clone-1-kqum.onrender.com/api/auth';
 
   constructor(
     private http: HttpClient,
@@ -41,49 +39,34 @@ export class LoginComponent {
     this.mode === 'login' ? this.login() : this.register();
   }
 
-  // ---------------- REGISTER ----------------
   register() {
-   this.http.post<any>(`${this.base}/register`, this.form)
-
-      .subscribe({
-        next: res => {
-          this.auth.setLogin(res.token, res.user);
-
-          alert(`Registered as ${res.user.role.toUpperCase()}`);
-          this.redirectByRole(res.user.role);
-        },
-        error: err => alert(err.error?.message || 'Registration failed')
-      });
-  }
-
-  // ---------------- LOGIN ----------------
-  login() {
-  this.http.post<any>(`${this.base}/login`, {
-  email: this.form.email,
-  password: this.form.password
-})
-
-    .subscribe({
-      next: res => {
+    this.http.post<any>(`${this.base}/register`, this.form).subscribe({
+      next: (res) => {
         this.auth.setLogin(res.token, res.user);
-
-        alert(`Logged in as ${res.user.role.toUpperCase()}`);
+        alert(`Registered as ${res.user.role.toUpperCase()}`);
         this.redirectByRole(res.user.role);
       },
-      error: err => alert(err.error?.message || 'Login failed')
+      error: (err) => alert(err.error?.message || 'Registration failed')
     });
   }
 
-  // ---------------- ROLE REDIRECT ----------------
-  redirectByRole(role: string) {
-    console.log('Logged in role:', role);
+  login() {
+    this.http.post<any>(`${this.base}/login`, {
+      email: this.form.email,
+      password: this.form.password
+    }).subscribe({
+      next: (res) => {
+        this.auth.setLogin(res.token, res.user);
+        alert(`Logged in as ${res.user.role.toUpperCase()}`);
+        this.redirectByRole(res.user.role);
+      },
+      error: (err) => alert(err.error?.message || 'Login failed')
+    });
+  }
 
-    if (role === 'driver') {
-      this.router.navigate(['/driver']);
-    } else if (role === 'admin') {
-      this.router.navigate(['/admin']);
-    } else {
-      this.router.navigate(['/rider']);
-    }
+  redirectByRole(role: string) {
+    if (role === 'driver') this.router.navigate(['/driver']);
+    else if (role === 'admin') this.router.navigate(['/admin']);
+    else this.router.navigate(['/rider']);
   }
 }
